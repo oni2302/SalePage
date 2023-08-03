@@ -31,7 +31,6 @@ class App
         $url = $this->getUrl();
         $url = $this->__routes->routeHandle($url);
         $urlArr = array_values(array_filter(explode('/', $url))); //tách đường dẫn
-        
         $urlRoute ='';
         if(!empty($urlArr)){
             foreach ($urlArr as $key => $value) {
@@ -69,13 +68,12 @@ class App
             }
         } else {
             $this->showError();
-        }
+        }     
         if (!empty($urlArr[1])) {
             $this->__action = $urlArr[1];
             unset($urlArr[1]);
         }
         $this->__params = array_values($urlArr);
-
         if (method_exists($this->__controller, $this->__action)) {
             call_user_func_array([$this->__controller, $this->__action], $this->__params);
         } else {

@@ -35,4 +35,8 @@
         }
         return false;
     }
+    public function execute($sql){
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }

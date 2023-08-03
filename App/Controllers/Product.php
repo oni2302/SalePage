@@ -6,12 +6,8 @@
             $this->model = $this->getModel('ProductModel');
         }
         public function index(){
-            $this->data['content'] = 'Product/index';
-            $this->data['sub_content']=[];
-            $this->data['title']='Index';
-            $this->renderView('layouts/client_layout',$this->data);
+            
         }
-
         public function list(){
             echo 'This is list product page.';
         }

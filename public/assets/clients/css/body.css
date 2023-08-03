@@ -91,7 +91,11 @@
 .product-card-list .card-wrapper:hover .card-image .selected-shape{
     background-color: var(--main-color);
 }
+
     /* EVENT */
+.product-card-list .card-wrapper .card-image .hidden{
+    display: none;
+}
 .product-card-list .card-wrapper .card-image .event-wrapper{
     display: flex;
     position: absolute;
@@ -169,8 +173,17 @@
 .product-card-list .card-wrapper .card-item .card-info .product-name{
     
 }
-.product-card-list .card-wrapper .card-item .card-info .price{
+.product-card-list .card-wrapper .card-item .card-info .product-price .new-price{
     font-size: .65rem;
     font-weight: 600;
-    color: red;
+    color: red !important;
+}
+.product-card-list .card-wrapper .card-item .card-info .product-price .price{
+    font-size: .65rem;
+    font-weight: 600;
+    color: red !important;
+}
+.product-card-list .card-wrapper .card-item .card-info .product-price.sale .price{
+    text-decoration: line-through;
+    color: var(--gray) !important;
 }
