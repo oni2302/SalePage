@@ -1,7 +1,7 @@
 <?php
     abstract class BaseModel extends Database{
         protected $db;
-    use QueryBuilder;
+        use QueryBuilder;
     function __construct()
     {
         $this->db = new Database();

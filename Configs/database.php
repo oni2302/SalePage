@@ -1,5 +1,8 @@
 <?php
-    $config['database']=[
-        'host'=> '',
-    ]
+$configs['database'] = [
+    'host'=>'localhost',
+    'user'=>'root',
+    'pass'=>'',
+    'db'=>'oni'
+];
 ?>
