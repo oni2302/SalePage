@@ -60,6 +60,11 @@
             if (isset($_salePrice)) {
                 $_salePrice = number_format($_salePrice, 0, '', ',');
             }
+            if(isset($value['_routeName'])){
+                $route = $_routeName;
+            }else{
+                $route = $_id;
+            }
         ?>
             <div class="card-wrapper col-sm-2">
                 <div class="card-item">
@@ -80,17 +85,17 @@
                                 <span><?php echo $discount ?>%</span>
                             </div>
                         </div>
-                        <a href="">
+                        <a href="<?php echo _WEB."/chi-tiet/".$route ?>">
                             <img src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.3/w_467,c_limit/ad544063-e375-4eb9-9988-288ef73d974a/air-pegasus-89-shoes-B8z6X8.png" alt="">
                         </a>
                         <div class="card-brand">
-                            <a href="">Nike</a>
+                            <a href="<?php echo _WEB."/thuong-hieu/".$brand ?>"><?php echo (isset($brand))?$brand:'' ?></a>
                         </div>
                         <div class="selected-shape"></div>
                     </div>
                     <div class="card-info">
                         <div class="product-name">
-                            <span>Nike Air Pegasus '89</span>
+                            <span><?php echo (isset($_nameVN))?$_nameVN:'';?></span>
                         </div>
                         <div class="product-price <?php echo ($_isSale) ? 'sale' : '' ?>">
                             <span class="new-price"><?php echo ($_isSale) ? $_salePrice . '₫ ' : '' ?> </span>

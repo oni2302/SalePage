@@ -5,14 +5,19 @@
         public function __construct(){
             $this->model = $this->getModel('ProductModel');
         }
-        public function index(){
-            
-        }
         public function list(){
             echo 'This is list product page.';
         }
-        public function detail($id='',$id1=''){
-            echo 'This is product detail page.'.$id.$id1;
+        public function detail($param=''){
+            if(empty($param)){
+                App::$app->showError();
+                return;
+            }
+            $this->data['content'] = 'Product/detail';
+            $this->data['sub_content']=[];
+            $this->data['sub_content']['_info'] =  $this->model->_getProductDetail($param);
+            $this->data['title']='Chi tiết sản phẩm';
+            $this->renderView('layouts/client_layout',$this->data);
         }
     }
 ?>

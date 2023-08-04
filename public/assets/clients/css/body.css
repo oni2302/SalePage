@@ -187,3 +187,102 @@
     text-decoration: line-through;
     color: var(--gray) !important;
 }
+
+/* Product Detail */
+.product-left{
+    flex-basis: 50%;
+    overflow: hidden;
+}
+#slide .item{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#slide .item img{
+    display: block;
+  width: 80%;
+  height: auto;
+}
+.color-yellow{
+    color: rgba(254, 213, 84, 1);
+}
+.color-gray{
+    color: rgb(153, 153, 153);
+}
+.price-wrapper .product-price .new-price{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: red !important;
+}
+.price-wrapper .product-price .price{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: red !important;
+}
+.price-wrapper .product-price.sale .price{
+    text-decoration: line-through;
+    color: var(--gray) !important;
+    font-size: 1rem;
+}
+
+.radio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.radio .radio-input{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.radio-square{
+    width: 35px;
+    height: 28px;
+    text-align: center;
+    border: .5px var(--gray) solid;
+    cursor: pointer;
+    display:block;
+}
+.radio .radio-input:checked ~ .radio-square{
+    border-color: var(--main-color);
+}
+
+/* shopping */
+.shopping-wrapper{
+    height: 45px !important;
+}
+.shopping{
+    height: inherit;
+}
+.quantity{
+    height: inherit;
+}
+.quantity input{
+    border: var(--gray) solid .5px;
+    outline: none;
+    text-align: center;
+    width: 40px;
+}
+.quantity .stepper{
+}
+.quantity i{
+    text-align: center;
+    border: var(--gray) solid .5px;
+    flex-basis: 50%;
+    cursor: pointer;
+}
+.add-cart{
+    height: 100%;
+    background-color: rgb(0, 0, 149);
+    color: var(--white);
+    font-size: .9rem;
+    cursor: pointer;
+}
+.buy{
+    height: 100%;
+    background-color: rgb(174, 0, 0);
+    color: var(--white);
+    font-size: .9rem;
+    cursor: pointer;
+}

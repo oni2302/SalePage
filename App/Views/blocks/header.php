@@ -3,7 +3,7 @@
         <div class="top-header">
             <div class="logo">
                 <div class="logo-image">
-                    <img src="<?php echo _WEB; ?>/public/assets/images/logo.png" alt="logo">
+                    <a href="<?php echo _WEB?>"><img src="<?php echo _WEB; ?>/public/assets/images/logo.png" alt="logo"></a>
                     <span>ONI Shop</span>
                 </div>
             </div>

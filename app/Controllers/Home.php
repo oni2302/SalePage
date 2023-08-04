@@ -10,7 +10,7 @@
             $this->data['content'] = 'Home/index';
             $this->data['sub_content']=[];
             $this->data['sub_content']['newProduct'] =  $this->model->getNewProduct();
-            $this->data['title']='Index';
+            $this->data['title']='Trang chủ';
             $this->renderView('layouts/client_layout',$this->data);
         }
     }
