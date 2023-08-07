@@ -23,5 +23,13 @@
             }
             return false;
         }
+        public function _getSize($_id){
+            $sql = "call getSize($_id)";
+            $result = $this->execute($sql)->fetchAll(PDO::FETCH_ASSOC);
+            if(!empty($result)){
+                return $result;
+            }
+            return false;
+        }
     }
 ?>

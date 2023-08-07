@@ -1,5 +1,4 @@
 <?php extract($_info);
-
 if (isset($_price)) {
     $_price = number_format($_price, 0, '', ',');
 }
@@ -7,6 +6,9 @@ if (isset($_salePrice)) {
     $_salePrice = number_format($_salePrice, 0, '', ',');
 }
 ?>
+<script>
+    var id = <?php echo $_id ?>
+</script>
 <div class="product-container container-sm mt-4">
     <div class="product-wrapper d-flex w-100">
         <div class="product-left">
@@ -96,31 +98,7 @@ if (isset($_salePrice)) {
             </div>
             <div class="size-wrapper d-flex flex-column gap-2">
                 <p>Chọn size</p>
-                <div class="size-select d-flex ps-1 gap-2">
-                    <div class="radio">
-                        <label>
-                            <input class="radio-input" type="radio" name="size" value=31>
-                            <span class="radio-square">31</span>
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input class="radio-input" type="radio" name="size" value=31>
-                            <span class="radio-square">31</span>
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input class="radio-input" type="radio" name="size" value=31>
-                            <span class="radio-square">31</span>
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input class="radio-input" type="radio" name="size" value=31>
-                            <span class="radio-square">31</span>
-                        </label>
-                    </div>
+                <div class="size-select d-flex ps-1 gap-2" id="size-box">
                 </div>
                 <div class="size-guide">
                     <a href=""><i class="fa-solid fa-lightbulb color-yellow"></i> Hướng dẫn chọn size giày</a>
@@ -130,11 +108,12 @@ if (isset($_salePrice)) {
                 <div class="shopping d-flex align-items-center">
                     <div class="quantity d-flex">
                         <label for="product-quantity" class="d-none">Số lượng</label>
-                            <input type="text" name="quantity" id="product-quantity">
-                            <span class="d-flex flex-column justify-content-center align-items-center h-100 stepper">
-                                <i class="fa fa-angle-up pt-1"></i>
-                                <i class="fa fa-angle-down pt-1"></i>
-                            </span>
+                        <input type="text" name="quantity" id="product-quantity" value="1">
+                        <input type="hidden" name="_id" id="_id" value="<?php echo $_id ?>">
+                        <span class="d-flex flex-column justify-content-center align-items-center h-100 stepper">
+                            <i class="fa fa-angle-up pt-1"></i>
+                            <i class="fa fa-angle-down pt-1"></i>
+                        </span>
                     </div>
                     <div class="add-cart d-flex align-items-center px-5">
                         <span><i class="fa-solid fa-cart-plus"></i> THÊM VÀO GIỎ</span>
@@ -146,14 +125,62 @@ if (isset($_salePrice)) {
             </div>
         </div>
     </div>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        $(document).ready(function() {
-            $("#slide").owlCarousel({
-                items: 1
+</div>
+<script>
+    var size_box = document.querySelector("#size-box");
+    $.ajax({
+        url: web + "/fetch/" + id + "/size",
+        cache: false,
+        success: function(result) {
+            const sizes = JSON.parse(result);
+            sizes.forEach(element => {
+                let child = `<div class="radio">
+            <label>
+                <input class="radio-input size" type="radio" name="size" value=` + element._id + `>
+                <span class="radio-square">` + element._value + `</span>
+            </label>
+        </div>`;
+                size_box.innerHTML += child;
             });
-        });
-    </script>
+        },
+    })
+
+    let form_wrapper = document.querySelectorAll('.form-wrapper');
+    form_wrapper.forEach(element => {
+        element.onclick = function() {
+            console.log('asdf');
+        }
+    });
+    let close_pop_up = document.querySelectorAll('.close-pop-up');
+
+    close_pop_up.forEach(element => {
+        element.onclick = function() {
+            element.parentElement.classList.toggle('hidden');
+        }
+    })
+
+    let add_cart = document.querySelector('.add-cart');
+    add_cart.onclick = function() {
+        let size = document.querySelector('input.size:checked').value;
+        if (size != null) {
+            let quantity = add_cart.parentElement.querySelector('#product-quantity').value;
+            let id = add_cart.parentElement.querySelector('#_id').value;
+
+            $.post(web + "/add-cart", {
+                    id: id,
+                    size: size,
+                    quantity: quantity
+                },
+                function(data, status) {
+                    if (status = 'success') {
+                        document.querySelector('.add-cart-notification').classList.toggle('show');
+                        setTimeout(function() {
+                            document.querySelector('.add-cart-notification').classList.toggle('show');
+                        }, 1000);
+                    }
+                }
+            );
+
+        }
+    }
+</script>

@@ -2,6 +2,8 @@
 @import 'variable.css'; 
 @import 'header.css';
 @import 'body.css';
+@import 'footer.css';
+@import 'form.css';
 
 .no-select{
     user-select: none;

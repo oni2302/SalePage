@@ -12,19 +12,19 @@
 </head>
 
 <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>var web = '<?php echo _WEB?>'</script>
     <?php
     $this->renderView('blocks/header');
-    ?>
-
-    <?php
+    
     $this->renderView($content,$sub_content);
-    ?>
-
-    <?php
     $this->renderView('blocks/footer');
     ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="<?php echo _WEB;?>/public/clients/js/script.js"></script>
+    <script type="text/javascript" src="<?php echo _WEB;?>/public/assets/clients/js/main.js"></script>
+    <script type="text/javascript" src="<?php echo _WEB;?>/public/assets/clients/js/auth.js"></script>
+    <script type="text/javascript" src="<?php echo _WEB;?>/public/assets/clients/js/carousel.js"></script>
 </body>
 
 </html>

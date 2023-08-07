@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 define('_ROOT', str_replace('\\', '/', __DIR__));
 //Xử lí đường dẫn web
 if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
@@ -22,18 +23,19 @@ if (!empty($configs_dir)) {
         }
     }
 }
-require_once 'core/Route.php';
-require_once './app/App.php';
+require_once _ROOT.'/core/Route.php';
+require_once _ROOT.'/app/App.php';
 //Kiểm tra config load database
     if(!empty($configs['database'])){
         $db_config = array_filter($configs['database']);    
         if(!empty($db_config)){
-            require_once 'core/Connection.php';
-            require_once 'core/QueryBuilder.php';
-            require_once 'core/Database.php';
+            require_once _ROOT.'/core/Connection.php';
+            require_once _ROOT.'/core/QueryBuilder.php';
+            require_once _ROOT.'/core/Database.php';
         }   
     }
-require_once 'core/BaseModel.php';
-require_once 'core/Request.php';
-require_once 'core/BaseController.php';
-require_once 'app/App.php';
+require_once _ROOT.'/core/BaseModel.php';
+require_once _ROOT.'/core/Request.php';
+require_once _ROOT.'/core/Mailer.php';
+require_once _ROOT.'/core/BaseController.php';
+require_once _ROOT.'/app/App.php';

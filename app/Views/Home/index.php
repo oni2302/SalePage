@@ -9,7 +9,7 @@
         </div>
         <div class="center-banner col-6">
             <div class="center-banner-image banner-image">
-                <img src="https://myshoes.vn/image/cache/catalog/2023/banner/sieusale/summer-sale-slide-OK-1240x1000h.png" alt="">
+                <img src="<?php echo _WEB.'/public/assets/images/center.png'?>" alt="">
             </div>
         </div>
         <div class="right-banner col-3">

@@ -286,3 +286,26 @@
     font-size: .9rem;
     cursor: pointer;
 }
+
+
+/* Cart-Page */
+.cart-page-wrapper{
+
+}
+.cart-page-wrapper .quantity-wrapper{
+    height: 2.8rem;
+}
+.cart-page-wrapper .tool{
+    height: 100%;
+    width: 50px;
+    border: .5px solid var(--gray);
+    cursor: pointer;
+}
+.cart-page-wrapper .cart-update:hover{
+    background-color: green;
+    color:white;
+}
+.cart-page-wrapper .cart-delete:hover{
+    background-color: rgb(220, 0, 0);
+    color:white;
+}
