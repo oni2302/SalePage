@@ -11,7 +11,10 @@ send_otp.forEach(element => {
         });
     }
 });
-
+function showSignUpPopUp(){
+    let account_pop_up = document.querySelector('.account-pop-up');
+    account_pop_up.classList.toggle('hidden');
+}
 let sign_up_btn = document.querySelectorAll('.sign-up-submit');
 sign_up_btn.forEach(element => {
     element.onclick = function () {

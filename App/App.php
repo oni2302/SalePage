@@ -1,7 +1,7 @@
 <?php
 class App
 {
-    private $__controller, $__action, $__params,$__routes;
+    private $__controller, $__action, $__params, $__routes;
     public static $app;
     function __construct()
     {
@@ -31,44 +31,49 @@ class App
         $url = $this->getUrl();
         $url = $this->__routes->routeHandle($url);
         $urlArr = array_values(array_filter(explode('/', $url))); //tách đường dẫn
-        $urlRoute ='';
-        if(!empty($urlArr)){
-            foreach ($urlArr as $key => $value) {
-                $urlRoute.=$value.'/';
-                $fileCheck = rtrim($urlRoute,'/');
-                $fileArr = explode('/',$fileCheck);
-                $fileArr[count($fileArr)-1] = ucfirst($fileArr[count($fileArr)-1]);
-                $fileCheck =implode('/',$fileArr);
 
-                if(!empty($urlArr[$key-1])){
-                    unset($urlArr[$key-1]);
+        $urlRoute = '';
+        if (!empty($urlArr)) {
+            foreach ($urlArr as $key => $value) {
+                $urlRoute .= $value . '/';
+                $fileCheck = rtrim($urlRoute, '/');
+                $fileArr = explode('/', $fileCheck);
+                $fileArr[count($fileArr) - 1] = ucfirst($fileArr[count($fileArr) - 1]);
+                $fileCheck = implode('/', $fileArr);
+
+                if (!empty($urlArr[$key - 1])) {
+                    unset($urlArr[$key - 1]);
                 }
-                if(file_exists('app/Controllers/'.($fileCheck).'.php')){
+                if (file_exists('app/Controllers/' . ($fileCheck) . '.php')) {
                     $urlRoute = $fileCheck;
                     break;
                 }
             }
             $urlArr = array_values($urlArr);
         }
-
         if (!empty($urlArr[0])) {
             $this->__controller = ucfirst($urlArr[0]);
         } else {
             $this->__controller = ucfirst($this->__controller);
         }
+
+        //Xử lí urlCheck empty
+        if (empty($urlRoute)) {
+            $urlRoute = $this->__controller;
+        }
         //Kiểm tra file Controller
-        if (file_exists('app/Controllers/' . ($this->__controller) . '.php')) {
-            require_once 'app/Controllers/' . ($this->__controller) . '.php';
+        if (file_exists('app/Controllers/' . ($urlRoute) . '.php')) {
+            require_once 'app/Controllers/' . ($urlRoute) . '.php';
             //Kiểm tra class Controller
             if (class_exists($this->__controller)) {
                 $this->__controller = new $this->__controller();
                 unset($urlArr[0]);
-            }else{
+            } else {
                 $this->showError();
             }
         } else {
             $this->showError();
-        }     
+        }
         if (!empty($urlArr[1])) {
             $this->__action = $urlArr[1];
             unset($urlArr[1]);
@@ -81,7 +86,7 @@ class App
         }
     }
     // Hiển thị lỗi
-    public function showError($name = '404',$data=[])
+    public function showError($name = '404', $data = [])
     {
         extract($data);
         require_once 'Errors/' . $name . '.php';

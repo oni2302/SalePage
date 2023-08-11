@@ -19,6 +19,7 @@
             $this->data['title']='Chi tiết sản phẩm';
             $this->renderView('layouts/client_layout',$this->data);
         }
+        
         public function size($id){
             echo json_encode($this->model->_getSize($id));
             

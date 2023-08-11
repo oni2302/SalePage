@@ -1,6 +1,13 @@
 <?php if (isset($_SESSION['cart'])) {
     $cart = $_SESSION['cart'];
-} ?>
+} 
+$_isLogin = false;
+$user = null;
+if(isset($_SESSION['user'])){
+    $_isLogin = true;
+    $user = $_SESSION['user'];
+}
+?>
 <div class="header container-fluid">
     <div class="header-container">
         <div class="top-header">
@@ -20,9 +27,9 @@
                         <i class="fa-regular fa-user"></i>
                     </div>
                     <div class="account">
-                        <p>Đăng nhập/Đăng kí</p>
+                        <span>Đăng nhập</span>/<span onclick="showSignUpPopUp()">Đăng kí</span>
                         <div class="account-pop-up hidden">
-                            <div class="close-pop-up"><i class="fa-solid fa-x"></i></div>
+                            <div class="close-pop-up" onclick="showSignUpPopUp()"><i class="fa-solid fa-x"></i></div>
                             <div class=" form-wrapper sign-up-form-wrapper shadow-sm d-flex justity-content-center align-items-center">
                                 <div class="sign-up-form d-flex justity-content-center align-items-center">
                                     <h3>ĐĂNG KÍ</h3>

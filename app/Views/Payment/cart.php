@@ -1,8 +1,14 @@
 <?php
 $cart_check = false;
+$discount = 0;
 if (isset($_SESSION['cart'])) {
     if (!empty($_SESSION['cart'])) {
         $cart_check = true;
+    }
+    if(isset($_SESSION['voucher'])){
+        $voucher = $_SESSION['voucher'];
+        $discount = $voucher['discount'];
+        unset($_SESSION['voucher']);
     }
 }
 if (!$cart_check) { ?>
@@ -11,10 +17,10 @@ if (!$cart_check) { ?>
     </div>
 <?php } else {
 ?>
-    <div class="cart-page-wrapper container-sm d-flex justify-content-center mt-2">
+    <div class="cart-page-wrapper container-sm d-flex justify-content-between mt-2 flex-wrap">
         <div class="cart-page">
             <h4 style="font-weight: 600;color:var(--sub-color);text-align:center;">GIỎ HÀNG</h4>
-            <table class="table table align-middle table-responsive">
+            <table class="table table align-middle table-responsive p-1 border border-1 border-gray">
                 <thead>
                     <tr>
                         <th scope="col">Hình ảnh</th>
@@ -26,11 +32,14 @@ if (!$cart_check) { ?>
                 </thead>
                 <tbody>
                     <?php
+                    $price = 0;
                     foreach ($_SESSION['cart'] as $key => $value) {
                         extract($value);
                         if ($_isSale) {
                             $_price = $_salePrice;
-                        } ?>
+                        }
+                        $price = $_price * $quantity;
+                    ?>
                         <tr class="">
                             <td scope="row">
                                 <img width="100px" height="100px" src="<?php echo _WEB . '/public/assets/images/products/nike-air-force-1-07-trang/1.jpg' ?>" alt="1">
@@ -61,6 +70,34 @@ if (!$cart_check) { ?>
                         </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="check-out-page">
+            <h4 style="font-weight: 600;color:var(--sub-color);text-align:center;">THANH TOÁN</h4>
+            <div class="check-out border border-1 border-gray p-3">
+                <div class="voucher-field">
+                    <p class="border-bottom border-1 border-gray mx-2">Sử dụng mã giảm giá</p>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="basic-addon1">$</span>
+                        <input type="text" class="form-control" placeholder="Mã giảm giá" aria-label="voucher" aria-describedby="basic-addon1">
+                        <button class="btn btn-outline-success" type="button" id="button-addon2">Áp dụng</button>
+                    </div>
+                    <div class="check-out-info border border-1 border-gray p-2">
+                        <div class="price">
+                            <span>Thành tiền: </span> <span><?php echo number_format($price, 0, '', ',')?><span>₫</span></span>
+                        </div>
+                        <div class="discount">
+                            <span>Giảm giá: </span><span><?php echo number_format($price*$discount, 0, '', ',') ?><span>₫</span></span>
+                        </div>
+                        <div class="total">
+                            <span>Tổng cộng: </span><span><?php echo number_format($price-($price*$discount), 0, '', ',')?><span>₫</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 mt-2">
+                    <button class="btn btn-danger" type="button">Thanh toán</button>
+                </div>
+            </div>
+
         </div>
     </div>
 <?php }

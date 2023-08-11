@@ -14,4 +14,7 @@
 
     // Payment
     $routes['gio-hang'] = 'payment/cart';
-?>
+
+    // Account
+    $routes['xu-li-dang-nhap'] = 'account/loginValidate';
+    $routes['dang-nhap']='account/login';
