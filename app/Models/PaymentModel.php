@@ -11,5 +11,8 @@
         {
             parent::__construct();
         }
+        public function createReceipt(){
+            
+        }
         
     }

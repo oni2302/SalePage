@@ -14,7 +14,7 @@
 
     // Payment
     $routes['gio-hang'] = 'payment/cart';
-
+    $routes['tao-hoa-don'] = 'payment/createReceipt';
     // Account
     $routes['xu-li-dang-nhap'] = 'account/loginValidate';
     $routes['dang-nhap']='account/login';

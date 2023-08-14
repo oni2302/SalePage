@@ -71,7 +71,7 @@ if (isset($_salePrice)) {
                     </div>
                 </div>
                 <div class="store-check-wrapper border-start border-gray border-1 px-2 d-flex flex-column">
-                    <div class="store-check border-0 d-flex gap-1">
+                    <div class="store-check border-0 d-flex gap-1 avaiable">
                         <div class="avaiable text-success">
                             <i class="fa-solid fa-check "></i>
                         </div>
@@ -115,10 +115,10 @@ if (isset($_salePrice)) {
                             <i class="fa fa-angle-down pt-1"></i>
                         </span>
                     </div>
-                    <div class="add-cart d-flex align-items-center px-5">
+                    <div class="add-cart d-flex align-items-center px-3 px-xl-5">
                         <span><i class="fa-solid fa-cart-plus"></i> THÊM VÀO GIỎ</span>
                     </div>
-                    <div class="buy d-flex align-items-center px-5">
+                    <div class="buy d-flex align-items-center px-3 px-xl-5">
                         <span><i class="fa-solid fa-money-bill"></i> MUA HÀNG</span>
                     </div>
                 </div>

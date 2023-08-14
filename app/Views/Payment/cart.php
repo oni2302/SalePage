@@ -32,6 +32,7 @@ if (!$cart_check) { ?>
                 </thead>
                 <tbody>
                     <?php
+                    $total = 0;
                     $price = 0;
                     foreach ($_SESSION['cart'] as $key => $value) {
                         extract($value);
@@ -39,6 +40,7 @@ if (!$cart_check) { ?>
                             $_price = $_salePrice;
                         }
                         $price = $_price * $quantity;
+                        $total+=$price;
                     ?>
                         <tr class="">
                             <td scope="row">
@@ -68,6 +70,7 @@ if (!$cart_check) { ?>
                             <td><?php echo number_format($_price, 0, '', ','); ?><span>₫</span></td>
                             <td><?php echo number_format($_price * $quantity, 0, '', ','); ?><span>₫</span></td>
                         </tr>
+                        <?php }?>
                 </tbody>
             </table>
         </div>
@@ -83,22 +86,22 @@ if (!$cart_check) { ?>
                     </div>
                     <div class="check-out-info border border-1 border-gray p-2">
                         <div class="price">
-                            <span>Thành tiền: </span> <span><?php echo number_format($price, 0, '', ',')?><span>₫</span></span>
+                            <span>Thành tiền: </span> <span><?php echo number_format($total, 0, '', ',')?><span>₫</span></span>
                         </div>
                         <div class="discount">
-                            <span>Giảm giá: </span><span><?php echo number_format($price*$discount, 0, '', ',') ?><span>₫</span></span>
+                            <span>Giảm giá: </span><span><?php echo number_format($total*$discount, 0, '', ',') ?><span>₫</span></span>
                         </div>
                         <div class="total">
-                            <span>Tổng cộng: </span><span><?php echo number_format($price-($price*$discount), 0, '', ',')?><span>₫</span></span>
+                            <span>Tổng cộng: </span><span><?php echo number_format($total-($total*$discount), 0, '', ',')?><span>₫</span></span>
                         </div>
                     </div>
                 </div>
                 <div class="d-grid gap-2 mt-2">
-                    <button class="btn btn-danger" type="button">Thanh toán</button>
+                    <a href="<?php echo _WEB.'/tao-hoa-don' ?>" class="btn btn-danger" type="button">Thanh toán</a>
                 </div>
             </div>
 
         </div>
     </div>
-<?php }
+<?php 
                 } ?>

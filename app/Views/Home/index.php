@@ -1,18 +1,18 @@
 <?php
 ?>
 <div class="top-banner">
-    <div class="banner-wraper d-flex container-sm justify-content-center">
-        <div class="left-banner col-3">
+    <div class="banner-wraper d-flex container-fluid justify-content-center px-3">
+        <div class="left-banner col-xl-3 sub-banner">
             <div class="left-banner-image banner-image">
                 <img src="https://myshoes.vn/image/cache/catalog/2022/banner/slide-trai-20-300x500h.png" alt="">
             </div>
         </div>
-        <div class="center-banner col-6">
+        <div class="center-banner col-xl-6 col-sm-12">
             <div class="center-banner-image banner-image">
                 <img src="<?php echo _WEB.'/public/assets/images/center.png'?>" alt="">
             </div>
         </div>
-        <div class="right-banner col-3">
+        <div class="right-banner col-xl-3 sub-banner">
             <div class="right-banner-image banner-image">
                 <img src="https://myshoes.vn/image/cache/catalog/2022/banner/slide-trai-20-300x500h.png" alt="">
             </div>
@@ -23,16 +23,16 @@
 <div class="perform-box">
     <div class="container d-flex per-wraper">
         <div class="per per-1">
-            <h1>Tiêu chí 1</h1>
-            <p>Cái gì đó...</p>
+            <h1><i class="fa-solid fa-certificate"></i></h1>
+            <p>Hàng chính hãng chất lượng cao</p>
         </div>
         <div class="per per-2">
-            <h1>Tiêu chí 2</h1>
-            <p>Cái gì đó</p>
+            <h1><i class="fa-solid fa-truck-fast"></i></h1>
+            <p>Miễn phí giao hàng với đơn hàng > 500k</p>
         </div>
         <div class="per per-3">
-            <h1>Tiêu chí 3</h1>
-            <p>Cái gì đó...</p>
+            <h1><i class="fa-solid fa-rotate"></i></h1>
+            <p>Hoàn trả hàng trong vòng 7 ngày</p>
         </div>
     </div>
 </div>
@@ -46,7 +46,7 @@
             #Oni Shop
         </div>
     </div>
-    <div class="product-card-list flex-wrap">
+    <div class="product-card-list flex-wrap row">
         <?php
         foreach ($newProduct as $value) {
             extract($value);
@@ -66,7 +66,7 @@
                 $route = $_id;
             }
         ?>
-            <div class="card-wrapper col-sm-2">
+            <div class="card-wrapper col-xxl-2 col-xl-2 col-lg-3 col-sm-6 col-xs-12">
                 <div class="card-item">
                     <div class="card-image no-select">
                         <div class="event-wrapper">

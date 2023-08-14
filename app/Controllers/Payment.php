@@ -90,4 +90,15 @@ class Payment extends BaseController
             echo json_encode($returnData);
         }
     }
+    public function createReceipt(){
+        if(isset($_SESSION['user'])){
+
+        }else{
+            $total = 0;
+            foreach ($_SESSION['cart'] as $key => $value) {
+                $total+=$value['_salePrice']*$value['quantity'];
+            }
+            echo $total;
+        }
+    }
 }

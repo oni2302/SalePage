@@ -1,3 +1,29 @@
+.header-wrapper .ham-button{
+    position: fixed;
+    background-color: var(--main-color);
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
+.header-wrapper .ham-button .hide{
+    display: none;
+}
+.header-wrapper .ham-button.active{
+    background-color: var(--sub-color);
+}
+.header-wrapper .ham-button.active .show{
+    display: none;
+}
+.header-wrapper .ham-button.active .hide{
+    display: unset;
+}
 .header {
     user-select: none;
     -moz-user-select: none;
@@ -61,6 +87,9 @@
     padding-left: 10px;
     border: none;
     border: .5px solid var(--sub-color);
+}
+.search-bar input:focus{
+    outline: none;
 }
 
 .search-bar button {
