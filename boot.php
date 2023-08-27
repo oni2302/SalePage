@@ -39,4 +39,5 @@ require_once _ROOT.'/core/Request.php';
 require_once _ROOT.'/core/Mailer.php';
 require_once _ROOT.'/core/BaseController.php';
 require_once _ROOT.'/core/AdminController.php';
+require_once _ROOT.'/core/ZaloCore.php';
 require_once _ROOT.'/app/App.php';

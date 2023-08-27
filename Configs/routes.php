@@ -15,6 +15,13 @@
     // Payment
     $routes['gio-hang'] = 'payment/cart';
     $routes['tao-hoa-don'] = 'payment/createReceipt';
+    $routes['xu-li-thanh-toan'] = 'payment/paymentHandle';
+    $routes['thanh-toan'] = 'payment/checkOut';
     // Account
     $routes['xu-li-dang-nhap'] = 'account/loginValidate';
     $routes['dang-nhap']='account/login';
+
+
+    //Admin
+    $routes['quan-li-san-pham'] = 'admin/productManage/index';
+    $routes['dang-nhap-zalo-admin'] = 'admin/auth/ZaloLogin';

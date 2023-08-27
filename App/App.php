@@ -90,5 +90,6 @@ class App
     {
         extract($data);
         require_once 'Errors/' . $name . '.php';
+        die;
     }
 }
