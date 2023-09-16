@@ -18,6 +18,13 @@ class Auth extends BaseController
         $this->data['title'] = 'Đăng nhập quản trị viên';
         $this->renderView('layouts/account_layout', $this->data);
     }
+    private function base64url_encode($plainText)
+    {
+        $base64 = base64_encode($plainText);
+        $base64 = trim($base64, '=');    
+        $base64url = strtr($base64, '+/', '-_');  
+        return ($base64url);
+    }
     public function ZaloLogin()
     {
         $config = array(
@@ -27,8 +34,11 @@ class Auth extends BaseController
         $zalo = new Zalo($config);
         $helper = $zalo->getRedirectLoginHelper();
         $callBackUrl = "https://oni2302.id.vn/Admin/Auth/AdminZalo";
+        $random = bin2hex(openssl_random_pseudo_bytes(32));    
+        $code_verifier = $this->base64url_encode(pack('H*', $random));    
+        $code_challenge = $this->base64url_encode(pack('H*', hash('sha256', $code_verifier)));
         // $codeChallenge = base64_encode(hash('sha256',$this->loginUrlCodeVerify));
-        $codeChallenge = 'pmWkWSBCL51Bfkhn79xPuKBKHz__H6B-mY6G9_eieuM';
+        // $codeChallenge = 'pmWkWSBCL51Bfkhn79xPuKBKHz__H6B-mY6G9_eieuM';
         $state = "1";
         $loginUrl = $helper->getLoginUrl($callBackUrl, $codeChallenge, $state);
         header('location: ' . $loginUrl);
